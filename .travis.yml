@@ -9,14 +9,14 @@ script:
   - docker run aokwoodjtinio/react-test npm test -- --coverage
 
 after_success:
-  - docker build -t aokwoodjtinio/multi-client ./client
-  - docker build -t aokwoodjtinio/multi-nginx ./nginx
-  - docker build -t aokwoodjtinio/multi-server ./server
-  - docker build -t aokwoodjtinio/multi-worker ./worker
+  - docker build -t aokwoodjtinio/multi-client:latest ./client
+  - docker build -t aokwoodjtinio/multi-nginx:latest ./nginx
+  - docker build -t aokwoodjtinio/multi-server:latest ./server
+  - docker build -t aokwoodjtinio/multi-worker:latest ./worker
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   #Take those images and push it to docker hub
-  - docker push aokwoodjtinio/multi-client
-  - docker push aokwoodjtinio/multi-nginx
-  - docker push aokwoodjtinio/multi-server
-  - docker push aokwoodjtinio/multi-worker
+  - docker push aokwoodjtinio/multi-client:latest
+  - docker push aokwoodjtinio/multi-nginx:latest
+  - docker push aokwoodjtinio/multi-server:latest
+  - docker push aokwoodjtinio/multi-worker:latest
